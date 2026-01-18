@@ -5,16 +5,20 @@ As a System & Network Technician and Cyber Defense Trainee, I engineered a **hyb
 
 **Tech Stack:**
 * **Physical Networking:** Cisco Small Business Pro SRP500 (VLANs & Routing)
-* **Virtualization:** Proxmox VE 8.x (Bridge Isolation)
+* **Virtualization:** Proxmox VE 9.x (Bridge Isolation)
 * **Identity:** Windows Server 2019 (Active Directory/DHCP)
 * **Security:** pfSense Firewall & Network Segmentation
 
-## 2. Architecture & Challenges
+## 2. Infrastructure Status
+This dashboard monitors the live performance of the virtualization host and the active VMs (Kali, Win10, DC-1, pfSense).
+![Proxmox Dashboard](network-diagram.png)
+
+## 3. Architecture & Challenges
 I implemented a "Double-NAT" Zone architecture to solve a critical issue: **Rogue DHCP Leakage**.
 * **The Problem:** My initial Windows Server deployment accidentally broadcasted DHCP offers to the physical network, disrupting other devices.
 * **The Solution:** I engineered a "Virtual Cage" using a dedicated Linux Bridge (`vmbr1`) in Proxmox that physically air-gaps the lab from the upstream WAN.
 
-## 3. Configuration Evidence
+## 4. Configuration Evidence
 
 ### A. Physical Segmentation (Cisco SRP500)
 I configured the physical router to dedicate **Port 2** exclusively to the Lab Network (VLAN 10), removing it from the default Management VLAN (VLAN 1).
