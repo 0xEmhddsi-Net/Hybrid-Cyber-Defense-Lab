@@ -18,7 +18,7 @@ I implemented a "Double-NAT" Zone architecture to solve a critical issue: **Rogu
 
 ### A. Physical Segmentation (Cisco SRP500)
 I configured the physical router to dedicate **Port 2** exclusively to the Lab Network (VLAN 10), removing it from the default Management VLAN (VLAN 1).
-![Cisco VLAN Config](cisco-vlan-config.jpg)
+![Cisco VLAN Config](cisco-vlan-config.png)
 
 ### B. The "Virtual Cage" (Proxmox Networking)
 I created a custom Linux Bridge (`vmbr1`) with **no physical ports attached**. This forces all traffic to route through my pfSense firewall, ensuring total isolation.
